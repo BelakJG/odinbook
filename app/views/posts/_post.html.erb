@@ -1,0 +1,15 @@
+<div class = "post">
+    <h3 class="post-title">
+        <%= post.title %>
+    </h3>
+
+    <p class="post-content">
+        <%= post.content %>
+    </p>
+    
+    <% if post.edited %>
+        <p class="post-edited">
+            <%= post.updated_at %>
+        </p>
+    <% end %>
+</div>
