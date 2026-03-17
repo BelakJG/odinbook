@@ -1,0 +1,11 @@
+<%= link_to "Return to parent", @parent %>
+
+<h3><%= @comment.body %></h3>
+<%= button_to "Delete comment", @comment, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+
+<%= turbo_frame_tag "comment_form" %>
+<%= link_to "Reply to comment", new_comment_comment_path(@comment), data: {turbo_frame: "comment_form"}%>
+<h4>subcomments</h4>
+<div id="comments">
+    <%= render @comment.comments.order(created_at: :desc) %>
+</div>

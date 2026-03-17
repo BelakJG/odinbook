@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "comment_form" do %>
+    <%= form_with(model: [@parent, @comment]) do |form| %>
+        <%= form.label :body, "Make Comment" %>
+        <%= form.text_field :body %>
+        <%= form.submit "Reply" %>
+    <% end %>
+<% end %>

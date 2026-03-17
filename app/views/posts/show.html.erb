@@ -1,2 +1,9 @@
 <%= link_to "Return Home", posts_path %>
 <%= render "post", post: @post %>
+
+<h3>Comments</h3>
+<%= turbo_frame_tag "comment_form" %>
+<%= link_to "New Comment", new_post_comment_path(@post), data: {turbo_frame: "comment_form"}%>
+<div id="comments">
+    <%= render @comments %>
+</div>
