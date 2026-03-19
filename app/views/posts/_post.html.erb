@@ -1,6 +1,6 @@
 <div class = "post">
     <h3 class="post-title">
-        <%= link_to post.title, post %>
+        <%= link_to post.title, post %> by: <%= post.author.email %>
     </h3>
 
     <p class="post-content">
@@ -13,8 +13,10 @@
         </p>
     <% end %>
     
-    <div class="post-buttons">
-        <%= link_to "Edit post", edit_post_path(post) %>
-        <%= link_to "Delete Post", post, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    </div>
+    <% if current_user == post.author %>
+        <div class="post-buttons">
+            <%= link_to "Edit post", edit_post_path(post) %>
+            <%= link_to "Delete Post", post, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
+    <% end %>
 </div>
