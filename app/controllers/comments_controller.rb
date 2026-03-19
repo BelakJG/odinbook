@@ -12,12 +12,13 @@ class CommentsController < ApplicationController
 
   def new
     @parent = find_parent
-    @comment = @parent.comments.build
+    @comment = Comment.build(commentable: @parent, author: current_user)
   end
 
   def create
     @parent = find_parent
-    @comment = @parent.comments.build(comment_params)
+    @comment = Comment.build(commentable: @parent, author: current_user)
+    @comment.assign_attributes(comment_params)
 
     respond_to do |format|
       if @comment.save

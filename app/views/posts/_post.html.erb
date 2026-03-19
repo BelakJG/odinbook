@@ -1,4 +1,4 @@
-<div class = "post">
+<div class = "post" style="border: 1px solid blue">
     <h3 class="post-title">
         <%= link_to post.title, post %> by: <%= post.author.email %>
     </h3>
@@ -6,12 +6,6 @@
     <p class="post-content">
         <%= post.content %>
     </p>
-
-    <% if post.edited %>
-        <p class="post-edited">
-            Edited: <%= post.updated_at %>
-        </p>
-    <% end %>
     
     <% if current_user == post.author %>
         <div class="post-buttons">
