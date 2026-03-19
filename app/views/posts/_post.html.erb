@@ -1,6 +1,6 @@
 <div class = "post" style="border: 1px solid blue">
     <h3 class="post-title">
-        <%= link_to post.title, post %> by: <%= post.author.email %>
+        <%= link_to post.title, post %> by: <%= link_to post.author.email, post.author %>
     </h3>
 
     <p class="post-content">
