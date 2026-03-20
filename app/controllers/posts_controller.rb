@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    following_ids = current_user.followings.pluck(:id)
+    @posts = Post.where(author_id: following_ids + [ current_user.id ]).order(created_at: :desc)
   end
 
   def show

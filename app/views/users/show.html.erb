@@ -1,5 +1,13 @@
 <h1>Profile for <%= @user.email %></h1>
 
+<% if user_signed_in? && current_user != @user %>
+    <% unless current_user.following?(@user) %>
+        <%= button_to "follow", follow_user_path(@user), method: :post %>
+    <% else %>
+        <%= button_to "unfollow", unfollow_user_path(@user), method: :delete %>
+    <% end %>
+<% end %>
+
 <div class="user-posts">
     <%= render @posts %>
 </div>
