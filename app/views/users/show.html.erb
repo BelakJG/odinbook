@@ -1,6 +1,6 @@
 <h1>Profile for <%= @user.email %></h1>
 <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar %>
+    <%= image_tag @user.avatar, width: 150 %>
 <% end %>
 
 <% if user_signed_in? && current_user != @user %>

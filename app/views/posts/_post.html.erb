@@ -1,6 +1,7 @@
 <div class = "post" style="border: 1px solid blue">
     <h3 class="post-title">
         <%= link_to post.title, post %> by: <%= link_to post.author.email, post.author %>
+        <%= image_tag(post.author.avatar, width: 50) if post.author.avatar.attached? %>
     </h3>
 
     <p class="post-content">
