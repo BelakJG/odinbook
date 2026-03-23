@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
+  has_one_attached :avatar
+
   # functions to follow other user
   def follow(other_user)
     self.followings << other_user unless other_user == self
