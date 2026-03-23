@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :inverse_follow_lists, foreign_key: :following_id, class_name: "FollowList", dependent: :destroy
   has_many :followers, through: :inverse_follow_lists, source: :user
 
+  has_many :likes, dependent: :destroy
+
   def follow(other_user)
     self.followings << other_user unless other_user == self
   end
