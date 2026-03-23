@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :comments do
     resources :comments
+    resources :likes, only: [ :create, :destroy ]
   end
   resources :users do
     member do

@@ -1,9 +1,21 @@
 <div class="comment" style="border: 1px solid red">
     <div class="comment-author">
-        <h4><%= comment.author.email %></h3>
+        <h4>By: <%= comment.author.email %></h3>
     </div>
     <div class="comment-body">
         <%= comment.body %>
+    </div>
+    <div>
+        <p>Replies: <%= comment.comments.count %></p>
+        <p>Likes: <%= comment.likes.count %></p>
+    </div>
+    <div class="comment-like-button">
+        <% unless current_user.liked?(comment) %>
+            <%= button_to "Like", comment_likes_path(comment), method: :post %>
+        <% else %>
+            <% like = comment.likes.find_by(user: current_user) %>
+            <%= button_to "Unlike", comment_like_path(comment, like), method: :delete %>
+        <% end %>
     </div>
     <div class="comment-buttons">
         <%= link_to "View Comment", comment %>
