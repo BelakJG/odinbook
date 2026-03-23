@@ -13,6 +13,15 @@ class LikesController < ApplicationController
     end
   end
 
+  def destroy
+    @like = Like.find(params[:id])
+    if @like.user == current_user
+      @like.destroy
+    end
+
+    redirect_back fallback_location: root_path
+  end
+
   private
   def find_likeable
     if params[:post_id]

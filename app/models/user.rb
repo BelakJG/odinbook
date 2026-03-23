@@ -15,15 +15,18 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
+  # functions to follow other user
   def follow(other_user)
     self.followings << other_user unless other_user == self
   end
-
   def unfollow(other_user)
     self.followings.delete(other_user)
   end
-
   def following?(other_user)
     self.followings.include?(other_user)
+  end
+
+  def liked?(likeable_item)
+    self.likes.exists?(likeable: likeable_item)
   end
 end

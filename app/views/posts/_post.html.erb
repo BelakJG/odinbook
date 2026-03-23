@@ -13,7 +13,12 @@
     </div>
 
     <div class="post-like-button">
-        <%= button_to "Like", post_likes_path(post), method: :post %>
+        <% unless current_user.liked?(post) %>
+            <%= button_to "Like", post_likes_path(post), method: :post %>
+        <% else %>
+            <% like = post.likes.find_by(user: current_user)%>
+            <%= button_to "Unlike", post_like_path(post, like), method: :delete %>
+        <% end %>
     </div>
     
     <% if current_user == post.author %>
