@@ -1,4 +1,4 @@
-<div class = "post" style="border: 1px solid blue">
+<div class = "post">
     <h3 class="post-title">
         <%= link_to post.title, post %> by: <%= link_to post.author.email, post.author %>
         <%= image_tag(post.author.avatar, width: 50) if post.author.avatar.attached? %>
@@ -8,12 +8,9 @@
         <%= post.content %>
     </p>
 
-    <div>
+    <div class="post-info">
         <p>Comments: <%= post.comments.count %></p>
         <p>Likes: <%= post.likes.count %></p>
-    </div>
-
-    <div class="post-like-button">
         <% unless current_user.liked?(post) %>
             <%= button_to "Like", post_likes_path(post), method: :post %>
         <% else %>
@@ -21,6 +18,7 @@
             <%= button_to "Unlike", post_like_path(post, like), method: :delete %>
         <% end %>
     </div>
+
     
     <% if current_user == post.author %>
         <div class="post-buttons">

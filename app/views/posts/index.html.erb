@@ -1,7 +1,5 @@
-<h1>Front Page</h1>
-
-<%= turbo_frame_tag "new_post", src: new_post_path %>
 
 <div id="posts">
+    <%= turbo_frame_tag "new_post", src: new_post_path %>
     <%= render @posts %>
 </div>
