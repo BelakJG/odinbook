@@ -3,7 +3,7 @@
     <%= render "post", post: @post %>
 </div>
 
-<div>
+<div id="comments-header">
     <h3>Comments</h3>
     <div id="new_comment">
         <%= turbo_frame_tag "comment_form" %>
