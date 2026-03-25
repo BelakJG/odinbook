@@ -1,6 +1,6 @@
 <div class="comment">
     <div class="comment-author">
-        <h3>By: <%= comment.author.email %> <%= image_tag(comment.author.avatar, width: 35) if comment.author.avatar.attached? %></h3>
+        <h3>Comment by: <%= comment.author.email %> <%= image_tag(comment.author.avatar, width: 35) if comment.author.avatar.attached? %></h3>
     </div>
     <div class="comment-body">
         <%= comment.body %>
@@ -19,5 +19,6 @@
     </div>
     <div class="comment-buttons">
         <%= link_to "View Comment", comment %>
+        <%= button_to "Delete comment", comment, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
     </div>
 </div>

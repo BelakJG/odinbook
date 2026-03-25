@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   def show
     @parent = @comment.commentable
+    @replies = @comment.comments.order(created_at: :desc)
   end
 
   def new
