@@ -105,6 +105,28 @@
     width: 40%;
  }
 
+ #user-index {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .user {
+   background-color: white;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   padding: 15px;
+   border-radius: 15px;
+   box-shadow: 0px 0px 15px 5px grey;
+ }
+
+ .user-info {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
  .post .post-info {
     display: flex;
     gap: 15px;

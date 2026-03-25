@@ -1,0 +1,18 @@
+<div class="user">
+    <%= link_to user do %>
+        <%= image_tag(user.avatar, width: 75) if user.avatar.attached? %>
+    <% end %>
+    <div class="user-info">
+        <%= user.email %>
+        <p>Posts: <%= user.posts.count %></p>
+        <% if user_signed_in? && current_user != user %>
+            <div class="user-buttons">
+                <% unless current_user.following?(user) %>
+                        <%= button_to "follow", follow_user_path(user), method: :post %>
+                <% else %>
+                    <%= button_to "unfollow", unfollow_user_path(user), method: :delete %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>
