@@ -26,14 +26,12 @@
   <body>
     <div id="top-bar">
       <% if user_signed_in? %>
-        <div>
-          <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-          <%= button_to "Return Home", root_path, method: :get %>
-        </div>
-        <div class="user-profile">
+        <%= link_to current_user, class: "user-profile" do %>
           <%= image_tag(current_user.avatar, width: 50) if current_user.avatar.attached? %>
-          <%= link_to current_user.email, current_user %>
-        </div>
+          <%= current_user.email %>
+        <% end %>
+        <%= link_to "Odinbook", root_path, class: "home-link" %>
+        <div class="logout-button"><%= button_to "Log Out", destroy_user_session_path, method: :delete%></div>
       <% end %>
     </div>
 
