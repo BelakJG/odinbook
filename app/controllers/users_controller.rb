@@ -10,6 +10,17 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
+  def update
+    @user = User.find(params[:id])
+    if current_user == @user
+      if current_user.update(user_params)
+        redirect_to current_user, notice: "Avatar updated!"
+      else
+        render :edit
+      end
+    end
+  end
+
   def follow
     user = User.find(params[:id])
     current_user.follow(user)
@@ -20,5 +31,10 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     current_user.unfollow(user)
     redirect_to user
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:id, :avatar)
   end
 end

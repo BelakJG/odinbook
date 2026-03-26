@@ -57,6 +57,10 @@
    text-decoration: none;
  }
 
+ .user-avatar {
+  display: flex;
+ }
+
  .home-link {
    color: white;
    text-decoration: none;
