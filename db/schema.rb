@@ -20,7 +20,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_23_215107) do
     t.string "name", null: false
     t.bigint "record_id", null: false
     t.string "record_type", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["blob_id"], name: "index_app_odinbook_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
@@ -33,7 +33,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_23_215107) do
     t.string "key", null: false
     t.text "metadata"
     t.string "service_name", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+    t.index ["key"], name: "index_app_odinbook_active_storage_blobs_on_key", unique: true
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
@@ -49,8 +49,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_23_215107) do
     t.string "commentable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_comments_on_author_id"
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["author_id"], name: "index_app_odinbook_comments_on_author_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_app_odinbook_comments_on_commentable"
   end
 
   create_table "follow_lists", force: :cascade do |t|
@@ -58,9 +58,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_23_215107) do
     t.bigint "following_id", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["following_id"], name: "index_follow_lists_on_following_id"
-    t.index ["user_id", "following_id"], name: "index_follow_lists_on_user_id_and_following_id", unique: true
-    t.index ["user_id"], name: "index_follow_lists_on_user_id"
+    t.index ["following_id"], name: "index_app_odinbook_follow_lists_on_following_id"
+    t.index ["user_id", "following_id"], name: "index_app_odinbook_follow_lists_on_user_id_and_following_id", unique: true
+    t.index ["user_id"], name: "index_app_odinbook_follow_lists_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -69,9 +69,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_23_215107) do
     t.string "likeable_type", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
-    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["likeable_type", "likeable_id"], name: "index_app_odinbook_likes_on_likeable"
+    t.index ["user_id", "likeable_id", "likeable_type"], name: "idx_on_user_id_likeable_id_likeable_type_2dcd7bb3b5", unique: true
+    t.index ["user_id"], name: "index_app_odinbook_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -81,7 +81,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_23_215107) do
     t.boolean "edited", default: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_posts_on_author_id"
+    t.index ["author_id"], name: "index_app_odinbook_posts_on_author_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,8 +92,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_23_215107) do
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_app_odinbook_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_app_odinbook_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
